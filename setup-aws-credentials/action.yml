@@ -4,10 +4,10 @@ inputs:
   AWS_ENVIRONMENT:
     description: "AWS environment DEVE / UAT / PROD"
     required: true
-  DEVE_AWS_ACCESS_KEY_ID:
+  DEV_AWS_ACCESS_KEY_ID:
     description: AWS access key for DEVE account
     required: true
-  DEVE_AWS_SECRET_ACCESS_KEY:
+  DEV_AWS_SECRET_ACCESS_KEY:
     description: AWS secret key for DEVE account
     required: true
   UAT_AWS_ACCESS_KEY_ID:
