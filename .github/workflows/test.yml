@@ -18,6 +18,7 @@ jobs:
       UAT_AWS_SECRET_ACCESS_KEY: ${{ secrets.UAT_AWS_SECRET_ACCESS_KEY }}
       PROD_AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
       PROD_AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+      INPUTS: ${{ github.event.inputs }}
 
     steps:
       - name: Checkout

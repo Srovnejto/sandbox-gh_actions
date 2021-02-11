@@ -13,7 +13,7 @@ export class App {
 
         cf.OutputToEnvironment(stackName, outputs);
         console.log("leadgen-storage-DEV.NewLeadQueueURL:", process.env["leadgen-storage-DEV.NewLeadQueueURL"]);
-        console.log("JsonInput:", core.getInput("JsonInput"));
+        console.log("INPUTS:", core.getInput("INPUTS"));
         console.log("ENVIRONMENT:", process.env);
     }
 }
