@@ -2,6 +2,8 @@ import { Environment } from "./enums/Environment";
 import { CloudFormationTools } from "./tools/CloudFormationTools";
 import { Credentials } from "./tools/Credentials";
 import * as core from "@actions/core";
+import * as github from "@actions/github";
+
 
 export class App {
     public async Main() {
@@ -13,8 +15,7 @@ export class App {
 
         cf.OutputToEnvironment(stackName, outputs);
         console.log("leadgen-storage-DEV.NewLeadQueueURL:", process.env["leadgen-storage-DEV.NewLeadQueueURL"]);
-        console.log("INPUTS:", core.getInput("INPUTS"));
-        console.log("ENVIRONMENT:", process.env);
+        console.log("github.context:", github.context);
     }
 }
 
