@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup AWS credentials
-        uses: Srovnejto/sandbox-gh_actions/setup-aws-credentials@v15
+        uses: Srovnejto/sandbox-gh_actions/setup-aws-credentials@v16
         with:
           AWS_REGION: eu-central-1
           AWS_ENVIRONMENT: ${{ github.event.inputs.AWS_ENVIRONMENT }}
@@ -29,7 +29,7 @@ jobs:
           PROD_AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
 
       - name: Deploy SAM template
-        uses: Srovnejto/sandbox-gh_actions/deploy-sam-template@v15
+        uses: Srovnejto/sandbox-gh_actions/deploy-sam-template@v16
         with:
           STACK_NAME: eu-central-1
           PARAMETER_OVERRIDES: ""
