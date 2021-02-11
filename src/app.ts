@@ -1,9 +1,7 @@
+import { CloudFormationTools } from "./aws/CloudFormationTools";
+import { Credentials } from "./aws/Credentials";
 import { Environment } from "./enums/Environment";
-import { CloudFormationTools } from "./tools/CloudFormationTools";
-import { Credentials } from "./tools/Credentials";
-import * as core from "@actions/core";
-import * as github from "@actions/github";
-
+import { Inputs } from "./github/inputs";
 
 export class App {
     public async Main() {
@@ -12,10 +10,10 @@ export class App {
         let stackName = "leadgen-storage-DEV";
         let cf = new CloudFormationTools();
         let outputs = await cf.GetStackOutput(stackName);
-
         cf.OutputToEnvironment(stackName, outputs);
+
         console.log("leadgen-storage-DEV.NewLeadQueueURL:", process.env["leadgen-storage-DEV.NewLeadQueueURL"]);
-        console.log("github.context:", github.context);
+        console.log(Inputs.GetInput("JsonInput"));
     }
 }
 
