@@ -1,13 +1,28 @@
 name: "Setup AWS credentials"
 description: "Setup AWS credentials"
 inputs:
-  aws-environment: # id of input
+  AWS_ENVIRONMENT:
     description: "AWS environment DEVE / UAT / PROD"
     required: true
-    default: "DEVE"
-outputs:
-  time:
-    description: "The time we greeted you"
+  DEVE_AWS_ACCESS_KEY_ID:
+    description: AWS access key for DEVE account
+    required: true
+  DEVE_AWS_SECRET_ACCESS_KEY:
+    description: AWS secret key for DEVE account
+    required: true
+  UAT_AWS_ACCESS_KEY_ID:
+    description: AWS access key for UAT account
+    required: true
+  UAT_AWS_SECRET_ACCESS_KEY:
+    description: AWS secret key for UAT account
+    required: true
+  PROD_AWS_ACCESS_KEY_ID:
+    description: AWS access key for PROD account
+    required: true
+  PROD_AWS_SECRET_ACCESS_KEY:
+    description: AWS secret key for PROD account
+    required: true
+
 runs:
   using: "node12"
   main: "index.js"
