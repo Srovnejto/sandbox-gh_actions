@@ -7,9 +7,9 @@ try {
     let AWS_REGION = core.getInput("AWS_REGION");
 
     switch (AWS_ENVIRONMENT) {
-        case "DEVE": {
-            AWS_ACCESS_KEY_ID = core.getInput("DEVE_AWS_ACCESS_KEY_ID");
-            AWS_SECRET_ACCESS_KEY = core.getInput("DEVE_AWS_SECRET_ACCESS_KEY");
+        case "DEV": {
+            AWS_ACCESS_KEY_ID = core.getInput("DEV_AWS_ACCESS_KEY_ID");
+            AWS_SECRET_ACCESS_KEY = core.getInput("DEV_AWS_SECRET_ACCESS_KEY");
             break;
         }
         case "UAT": {
