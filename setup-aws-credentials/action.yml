@@ -4,6 +4,9 @@ inputs:
   AWS_ENVIRONMENT:
     description: "AWS environment DEVE / UAT / PROD"
     required: true
+  AWS_REGION:
+    description: "AWS region identifier"
+    required: true
   DEV_AWS_ACCESS_KEY_ID:
     description: AWS access key for DEVE account
     required: true
