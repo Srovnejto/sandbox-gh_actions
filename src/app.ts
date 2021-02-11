@@ -9,10 +9,9 @@ export class App {
         let stackName = "leadgen-storage-DEV";
         let cf = new CloudFormationTools();
         let outputs = await cf.GetStackOutput(stackName);
-        console.log(outputs);
 
         cf.OutputToEnvironment(stackName, outputs);
-        console.log(process.env);
+        console.log("ENVIRONEMENT:", process.env);
     }
 }
 

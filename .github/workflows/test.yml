@@ -11,6 +11,14 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    env:
+      DEVE_AWS_ACCESS_KEY_ID: ${{ secrets.DEVE_AWS_ACCESS_KEY_ID }}
+      DEVE_AWS_SECRET_ACCESS_KEY: ${{ secrets.DEVE_AWS_SECRET_ACCESS_KEY }}
+      UAT_AWS_ACCESS_KEY_ID: ${{ secrets.UAT_AWS_ACCESS_KEY_ID }}
+      UAT_AWS_SECRET_ACCESS_KEY: ${{ secrets.UAT_AWS_SECRET_ACCESS_KEY }}
+      PROD_AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+      PROD_AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
