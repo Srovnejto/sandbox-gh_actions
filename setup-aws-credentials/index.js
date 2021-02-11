@@ -5,18 +5,18 @@ try {
 
     switch (awsEnvironment) {
         case "DEVE": {
-            process.env.AWS_ACCESS_KEY_ID = process.env.DEVE_AWS_ACCESS_KEY_ID;
-            process.env.AWS_SECRET_ACCESS_KEY = process.env.DEVE_AWS_SECRET_ACCESS_KEY;
+            process.env.AWS_ACCESS_KEY_ID = core.getInput("DEVE_AWS_ACCESS_KEY_ID");
+            process.env.AWS_SECRET_ACCESS_KEY = core.getInput("DEVE_AWS_SECRET_ACCESS_KEY");
             break;
         }
         case "UAT": {
-            process.env.AWS_ACCESS_KEY_ID = process.env.UAT_AWS_ACCESS_KEY_ID;
-            process.env.AWS_SECRET_ACCESS_KEY = process.env.UAT_AWS_SECRET_ACCESS_KEY;
+            process.env.AWS_ACCESS_KEY_ID = core.getInput("UAT_AWS_ACCESS_KEY_ID");
+            process.env.AWS_SECRET_ACCESS_KEY = core.getInput("UAT_AWS_SECRET_ACCESS_KEY");
             break;
         }
         case "PROD": {
-            process.env.AWS_ACCESS_KEY_ID = process.env.PROD_AWS_ACCESS_KEY_ID;
-            process.env.AWS_SECRET_ACCESS_KEY = process.env.PROD_AWS_SECRET_ACCESS_KEY;
+            process.env.AWS_ACCESS_KEY_ID = core.getInput("PROD_AWS_ACCESS_KEY_ID");
+            process.env.AWS_SECRET_ACCESS_KEY = core.getInput("PROD_AWS_SECRET_ACCESS_KEY");
             break;
         }
         default: throw "Unknown environment '" + awsEnvironment + "'.";
