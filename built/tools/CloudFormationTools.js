@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CloudFormationTools = void 0;
 const AWS = require("aws-sdk");
 class CloudFormationTools {
     constructor() {
