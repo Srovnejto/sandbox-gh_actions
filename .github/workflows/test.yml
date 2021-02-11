@@ -18,7 +18,7 @@ jobs:
 
       - name: Setup AWS credentials
         id: SetupAWS
-        uses: Srovnejto/sandbox-gh_actions/setup-aws-credentials@v6
+        uses: Srovnejto/sandbox-gh_actions/setup-aws-credentials@v7
         with:
           AWS_ENVIRONMENT: ${{ github.event.inputs.AWS_ENVIRONMENT }}
           DEVE_AWS_ACCESS_KEY_ID: ${{ secrets.DEVE_AWS_ACCESS_KEY_ID }}

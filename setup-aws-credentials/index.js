@@ -37,6 +37,7 @@ try {
 
     console.log("AWS_REGION: " + AWS_REGION);
     core.setSecret(AWS_REGION);
+    core.exportVariable('AWS_DEFAULT_REGION', AWS_REGION);
     core.exportVariable('AWS_REGION', AWS_REGION);
 } catch (error) {
     console.log("error: ", error);
