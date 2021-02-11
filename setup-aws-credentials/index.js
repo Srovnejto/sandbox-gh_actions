@@ -4,6 +4,7 @@ try {
     const awsEnvironment = core.getInput('AWS_ENVIRONMENT');
     let AWS_ACCESS_KEY_ID = null;
     let AWS_SECRET_ACCESS_KEY = null;
+    let AWS_REGION = "eu-central-1";
 
     switch (awsEnvironment) {
         case "DEVE": {
