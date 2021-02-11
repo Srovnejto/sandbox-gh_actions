@@ -1,0 +1,21 @@
+name: "Test"
+on:
+  workflow_dispatch:
+    inputs:
+      JsonInput:
+        description: "JSON input"
+        required: true
+        default: '{"VUE_APP_API_URL":"https://customer.srovnejto.cz/api","VUE_APP_FB_APP_ID":"619410902046565","VUE_APP_GOOGLE_CLIENT_ID":"524072367074-99rdeit5beofisknltkisa9ju4t6r1pt.apps.googleusercontent.com"}'
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run Node.js
+        run: |
+          npm install
+          node app.js
