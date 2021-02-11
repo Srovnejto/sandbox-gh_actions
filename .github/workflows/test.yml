@@ -26,7 +26,6 @@ jobs:
       - name: Setup AWS credentials
         id: SetupAWS
         uses: Srovnejto/sandbox-gh_actions/setup-aws-credentials
-
         with:
           aws-environment: "DEV"
 
