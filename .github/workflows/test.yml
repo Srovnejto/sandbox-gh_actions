@@ -30,6 +30,13 @@ jobs:
 
       - name: Test environment variable
         run: echo "AWS_ACCESS_KEY_ID ${{ env.AWS_ACCESS_KEY_ID }}"
+
+      - name: Get cloudformation stack outputs
+        shell: pwsh
+        run: |
+          aws cloudformation describe-stacks --stack-name ${{ github.event.inputs.Contentful_StackName }}  > ContentfulStackDescription.json
+          $outputs = (Get-Content ContentfulStackDescription.json | ConvertFrom-Json).Stacks[0].Outputs
+          echo $outputs
       #- name: Run Node.js
       #  run: |
       #    npm install
