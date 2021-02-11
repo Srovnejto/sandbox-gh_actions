@@ -19,3 +19,4 @@ runs:
         [ "${{ env.AWS_ENVIRONMENT }}" = "DEV" ] && echo "It is DEV"
         [ "${{ env.AWS_ENVIRONMENT }}" = "UAT" ] && echo "It is UAT".
         [ "${{ env.AWS_ENVIRONMENT }}" = "PROD" ] && echo "It is PROD".
+        echo "Done."
