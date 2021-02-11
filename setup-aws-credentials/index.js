@@ -1,12 +1,12 @@
 const core = require("@actions/core");
 
 try {
-    const awsEnvironment = core.getInput('AWS_ENVIRONMENT');
+    let AWS_ENVIRONMENT = core.getInput('AWS_ENVIRONMENT');
     let AWS_ACCESS_KEY_ID = null;
     let AWS_SECRET_ACCESS_KEY = null;
     let AWS_REGION = core.getInput("AWS_REGION");
 
-    switch (awsEnvironment) {
+    switch (AWS_ENVIRONMENT) {
         case "DEVE": {
             AWS_ACCESS_KEY_ID = core.getInput("DEVE_AWS_ACCESS_KEY_ID");
             AWS_SECRET_ACCESS_KEY = core.getInput("DEVE_AWS_SECRET_ACCESS_KEY");
@@ -22,10 +22,11 @@ try {
             AWS_SECRET_ACCESS_KEY = core.getInput("PROD_AWS_SECRET_ACCESS_KEY");
             break;
         }
-        default: throw "Unknown environment '" + awsEnvironment + "'.";
+        default: throw "Unknown environment '" + AWS_ENVIRONMENT + "'.";
     }
 
-    console.log("AWS_ENVIRONMENT: " + awsEnvironment);
+    console.log("AWS_ENVIRONMENT: " + AWS_ENVIRONMENT);
+    core.exportVariable('AWS_ENVIRONMENT', AWS_ENVIRONMENT);
 
     console.log("AWS_ACCESS_KEY_ID: " + AWS_ACCESS_KEY_ID);
     core.setSecret(AWS_ACCESS_KEY_ID);

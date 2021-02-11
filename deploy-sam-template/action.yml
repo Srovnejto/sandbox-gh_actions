@@ -1,0 +1,21 @@
+name: "Deploy SAM template"
+description: "Deploy SAM template"
+inputs:
+  STACK_NAME:
+    description: "CloudFormation stack name"
+    required: true
+  PARAMETER_OVERRIDES:
+    description: "CloudFormation stack name"
+    required: false
+  TAGS:
+    description: "CloudFormation tags"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        [ "${{ env.AWS_ENVIRONMENT }}" = "DEV" ] && echo "It is DEV"
+        [ "${{ env.AWS_ENVIRONMENT }}" = "UAT" ] && echo "It is UAT".
+        [ "${{ env.AWS_ENVIRONMENT }}" = "PROD" ] && echo "It is PROD".
