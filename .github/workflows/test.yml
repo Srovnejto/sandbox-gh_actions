@@ -28,7 +28,7 @@ jobs:
           DEV_AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
 
       - name: Read stack output
-        uses: Srovnejto/sandbox-gh_actions/read-stack-output@v20
+        uses: Srovnejto/sandbox-gh_actions/read-stack-output@v1
         with:
           STACK_NAME: ${{ github.event.inputs.STACK_NAME }}
 
