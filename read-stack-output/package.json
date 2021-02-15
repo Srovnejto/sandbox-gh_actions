@@ -1,9 +1,8 @@
 {
-  "name": "SetupAwsCredentials",
+  "name": "ReadStackOutput",
   "version": "1.0.0",
-  "description": "Setup AWS credentials",
+  "description": "Read cloudFormation stack output",
   "main": "index.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
   "author": "Srovnejto",
   "license": "MIT",
   "dependencies": {
