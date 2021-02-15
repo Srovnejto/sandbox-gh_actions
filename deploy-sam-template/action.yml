@@ -12,6 +12,9 @@ inputs:
     description: "Value of --base-dir parametere of sam build command"
     required: false 
     default: "./src"
+  BENDER_TOKEN:
+    description: "Token used to add Nuget repository source"
+    required: true 
   PARAMETER_OVERRIDES_DEV:
     description: "Parameters override for DEV environment"
     required: false
@@ -42,7 +45,7 @@ runs:
   steps:
     - name: Add Srovnejto NuGet source
       shell: bash
-      run: dotnet nuget add source -u "srt-bender" -p "${{secrets.BENDER_TOKEN}}" -n "Srovnejto-GitHub" "https://nuget.pkg.github.com/Srovnejto/index.json" --store-password-in-clear-text
+      run: dotnet nuget add source -u "srt-bender" -p "${{ inputs.BENDER_TOKEN }}" -n "Srovnejto-GitHub" "https://nuget.pkg.github.com/Srovnejto/index.json" --store-password-in-clear-text
 
     - name: Build SAM template
       shell: bash

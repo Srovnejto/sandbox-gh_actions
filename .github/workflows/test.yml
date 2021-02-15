@@ -6,7 +6,10 @@ on:
         description: AWS environment DEV / UAT / PROD
         required: true
         default: DEV
-
+      STACK_NAME:
+        description: Stack name
+        required: true
+        default: leadgen-storage-DEV
 jobs:
   test:
     name: Test
@@ -17,27 +20,21 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup AWS credentials
-        uses: Srovnejto/sandbox-gh_actions/setup-aws-credentials@v17
+        uses: Srovnejto/devops-aws-workflows/setup-aws-credentials@v1
         with:
           AWS_REGION: eu-central-1
           AWS_ENVIRONMENT: ${{ github.event.inputs.AWS_ENVIRONMENT }}
           DEV_AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
           DEV_AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
-          UAT_AWS_ACCESS_KEY_ID: ${{ secrets.UAT_AWS_ACCESS_KEY_ID }}
-          UAT_AWS_SECRET_ACCESS_KEY: ${{ secrets.UAT_AWS_SECRET_ACCESS_KEY }}
-          PROD_AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-          PROD_AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
 
-      - name: Deploy SAM template
-        uses: Srovnejto/sandbox-gh_actions/deploy-sam-template@v17
+      - name: Read stack output
+        uses: Srovnejto/sandbox-gh_actions/read-stack-output@v20
         with:
-          STACK_NAME: eu-central-1
-          PARAMETER_OVERRIDES: ""
-          TAGS: ""
+          STACK_NAME: ${{ github.event.inputs.STACK_NAME }}
 
       - name: Get cloudformation stack outputs
-        shell: pwsh
+        shell: bash
         run: |
-          aws cloudformation describe-stacks --stack-name leadgen-storage-DEV > StackDescription.json
-          $outputs = (Get-Content StackDescription.json | ConvertFrom-Json).Stacks[0].Outputs
-          echo $outputs
+          DeadLetterQueueURL=${{ github.event.inputs.STACK_NAME }}.DeadLetterQueueURL
+          value=$(printenv $DeadLetterQueueURL)
+          echo $value
