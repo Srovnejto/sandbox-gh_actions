@@ -28,6 +28,7 @@ jobs:
           DEV_AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
 
       - name: Read stack output
+        id: ReadStackOutput
         uses: Srovnejto/sandbox-gh_actions/read-stack-output@v1
         with:
           STACK_NAME: ${{ github.event.inputs.STACK_NAME }}
@@ -38,3 +39,7 @@ jobs:
           DeadLetterQueueURL=${{ github.event.inputs.STACK_NAME }}.DeadLetterQueueURL
           value=$(printenv $DeadLetterQueueURL)
           echo $value
+
+      - name: Get cloudformation stack outputs
+        shell: bash
+        run: echo ${{ steps.ReadStackOutput.outputs.DeadLetterQueueURL }}
