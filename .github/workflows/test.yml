@@ -31,10 +31,7 @@ jobs:
         id: ReadStackOutput
         uses: Srovnejto/sandbox-gh_actions/read-stack-output@v1
         with:
-          STACK_NAME: |
-            leadgen
-            -storage
-            -DEV
+          STACK_NAME: leadgen-storage-DEV
 
       - name: Get cloudformation stack outputs
         shell: bash
