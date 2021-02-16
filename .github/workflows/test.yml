@@ -31,7 +31,10 @@ jobs:
         id: ReadStackOutput
         uses: Srovnejto/sandbox-gh_actions/read-stack-output@v1
         with:
-          STACK_NAME: ${{ github.event.inputs.STACK_NAME }}
+          STACK_NAME: |
+            leadgen
+            -storage
+            -DEV
 
       - name: Get cloudformation stack outputs
         shell: bash
