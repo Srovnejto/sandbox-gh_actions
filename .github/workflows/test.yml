@@ -16,30 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup AWS credentials
-        uses: Srovnejto/devops-aws-workflows/setup-aws-credentials@v1
-        with:
-          AWS_REGION: eu-central-1
-          AWS_ENVIRONMENT: ${{ github.event.inputs.AWS_ENVIRONMENT }}
-          DEV_AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-          DEV_AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
-
-      - name: Read stack output
-        id: ReadStackOutput
-        uses: Srovnejto/sandbox-gh_actions/read-stack-output@v1
-        with:
-          STACK_NAME: leadgen-storage-DEV
-
-      - name: Get cloudformation stack outputs
-        shell: bash
+      - name: Log into GitHub Container Registry
         run: |
-          DeadLetterQueueURL=${{ github.event.inputs.STACK_NAME }}.DeadLetterQueueURL
-          value=$(printenv $DeadLetterQueueURL)
-          echo $value
-
-      - name: Get cloudformation stack outputs
-        shell: bash
-        run: echo ${{ steps.ReadStackOutput.outputs.DeadLetterQueueURL }}
+          echo "${{ secrets.BENDER_TOKEN  }}" | docker login https://ghcr.io --username srt-bender --password-stdin
+          echo cat ~/.docker/config.json
